@@ -1,0 +1,57 @@
+imap:
+  host: imap.host.com
+  port: 993
+  ssl: 1
+  user: user@example.com
+  pass: "password"
+  mailbox: Inbox
+
+smtp:
+  host: smtp.host.com
+  port: 465
+  ssl: 1
+  user: user@example.com
+  pass: "password"
+
+filters:
+  - name: ServiceName
+    conditions:
+      - field: From
+        value: 'email@service.com'
+      - field: Subject
+        value: "Votre code d'accès temporaire ServiceName"
+      - field: body_html
+        value: "un séjour temporaire hors de votre foyer ServiceName"
+    actions:
+      - field: From
+        value: 'ServiceName_Share <service@share.com>'
+      - field: To
+        value: 'service@share.com'
+      - field: DefaultBcc
+        value: 'your.email@example.com'
+
+  - name: ServiceName2
+    conditions:
+      - field: From
+        value: 'your.email@example.com'
+    actions:
+      - field: From
+        value: 'ServiceName_Share <service@share.com>'
+      - field: To
+        value: 'service@share.com'
+      - field: DefaultBcc
+        value: 'your.email@example.com'
+
+
+accountMapping:
+  user1@example.com:
+    - userx@example.com
+    - usery@example.com
+  user2@example.com:
+    - userw@example.com
+  user3@example.com:
+    - userz@example.com
+    - userk@example.com
+    - userl@example.com
+    - useru@example.com
+  randomUser@example.com: []
